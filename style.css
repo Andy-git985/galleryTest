@@ -1,0 +1,53 @@
+h1 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  /* margin-inline: auto; */
+  margin: 1rem auto 0;
+  width: min(90%, 70.5rem);
+}
+
+.full-img {
+  position: relative;
+  display: block;
+  width: 640px;
+  height: 480px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  background-color: rgba(0,0,0,0);
+}
+
+button {
+  border: 0;
+  background: rgba(150,150,150,0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+}
+
+.thumb-bar img {
+  display: block;
+  width: 100px;
+  float: left;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.col {
+  flex-direction: column;
+}
