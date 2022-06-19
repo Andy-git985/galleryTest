@@ -1,4 +1,5 @@
-const displayedImage = document.querySelector('.displayed-img');
+const slides = document.querySelectorAll('.slides');
+const slideshow = document.querySelector('.slideshow');
 const thumbBar = document.querySelector('.thumb-bar');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
@@ -18,34 +19,38 @@ const fade = [
   },
 ];
 
-/* Declaring the array of image filenames */
-const images = [
-  'images/pic1.jpg',
-  'images/pic2.jpg',
-  'images/pic3.jpg',
-  'images/pic4.jpg',
-  'images/pic5.jpg',
-];
 /* Looping through images and populates thumb-bar */
-images.forEach((elem) => {
+slides.forEach((elem) => {
   const newImage = document.createElement('img');
-  newImage.setAttribute('src', elem);
+  newImage.setAttribute('src', elem.attributes.src.value);
   thumbBar.appendChild(newImage);
 });
 
+let slideIndex = 0;
+showSlides(slideIndex);
+function showSlides(n) {
+  if (n > slides.length - 1) slideIndex = 0;
+  if (n < 0) slideIndex = slides.length - 1;
+  slides[slideIndex].style.display = 'block';
+  const hidden = Array.from(slides).filter((e, i) => i !== slideIndex);
+  hidden.forEach((e) => (e.style.display = 'none'));
+}
+
 thumbBar.addEventListener('click', (e) => {
-  displayedImage.src = e.target.src;
+  const arr = Array.from(slides).map((e) => e.attributes.src.value);
+  slideIndex = arr.indexOf(e.target.attributes.src.value);
+  showSlides(slideIndex);
 });
 
 prev.addEventListener('click', () => {
-  const currentSlide = displayedImage.attributes.src.value;
-  displayedImage.animate(fade, timing);
-  displayedImage.src = images.at(images.indexOf(currentSlide) - 1);
+  slideshow.animate(fade, timing);
+  showSlides((slideIndex -= 1));
 });
 
 next.addEventListener('click', () => {
-  const currentSlide = displayedImage.attributes.src.value;
-  displayedImage.animate(fade, timing);
-  // handles undefined when on end of array
-  displayedImage.src = images.at(images.indexOf(currentSlide) + 1) || images[0];
+  // const currentSlide = displayedImage.attributes.src.value;
+  slideshow.animate(fade, timing);
+  // // handles undefined when on end of array
+  // displayedImage.src = images.at(images.indexOf(currentSlide) + 1) || images[0];
+  showSlides((slideIndex += 1));
 });
