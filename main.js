@@ -36,9 +36,9 @@ function showSlides(n) {
   hidden.forEach((e) => (e.style.display = 'none'));
 }
 
-thumbBar.addEventListener('click', (e) => {
-  const arr = Array.from(slides).map((e) => e.attributes.src.value);
-  slideIndex = arr.indexOf(e.target.attributes.src.value);
+thumbBar.addEventListener('click', (evt) => {
+  const arr = Array.from(slides).map((elem) => elem.attributes.src.value);
+  slideIndex = arr.indexOf(evt.target.attributes.src.value);
   showSlides(slideIndex);
 });
 
