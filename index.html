@@ -12,12 +12,18 @@
   <body>
     <h1>Image gallery example</h1>
 
-    <div class="flex container">
+    <div class="flex container center">
       <div class="full-img">
-        <img class="displayed-img" src="images/pic1.jpg" />
+        <div class="fade">
+          <img class="displayed-img" src="images/pic1.jpg" />
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
       </div>
 
-      <div class="flex col thumb-bar"></div>
+      <!-- Next and previous buttons -->
+
+      <div class="flex col center thumb-bar"></div>
     </div>
   </body>
 </html>
