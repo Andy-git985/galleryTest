@@ -48,9 +48,6 @@ prev.addEventListener('click', () => {
 });
 
 next.addEventListener('click', () => {
-  // const currentSlide = displayedImage.attributes.src.value;
   slideshow.animate(fade, timing);
-  // // handles undefined when on end of array
-  // displayedImage.src = images.at(images.indexOf(currentSlide) + 1) || images[0];
   showSlides((slideIndex += 1));
 });
